@@ -79,7 +79,7 @@ jobs:
           propertyPath: "giscus.repo"
           value: ${{ github.repository }}
       - name: Build 🔧
-        uses: JekyllNet/action@v1
+        uses: JekyllNet/action@main
         with:
           source: .
           destination: ./_site
