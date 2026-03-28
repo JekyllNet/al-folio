@@ -1,0 +1,109 @@
+<h1 id="quick-start-guide">Quick Start Guide</h1>
+<p><strong>Get your al-folio site running in 5 minutes.</strong> This guide is for users who just want a working website quickly without deep customization.</p>
+<blockquote>
+<p><strong>Video Tutorial:</strong> Watch a walkthrough of these steps <a href="assets/video/tutorial_al_folio.mp4">here</a></p>
+</blockquote>
+<!--ts-->
+<ul>
+<li><a href="#quick-start-guide">Quick Start Guide</a>
+<ul>
+<li><a href="#step-1-create-your-repository-1-min">Step 1: Create Your Repository (1 min)</a></li>
+<li><a href="#step-2-configure-deployment-1-min">Step 2: Configure Deployment (1 min)</a></li>
+<li><a href="#step-3-personalize-2-min">Step 3: Personalize (2 min)</a></li>
+<li><a href="#step-4-view-your-site-1-min">Step 4: View Your Site (1 min)</a></li>
+<li><a href="#whats-next">What's Next?</a>
+<ul>
+<li><a href="#add-your-content">Add Your Content</a></li>
+<li><a href="#customize-appearance">Customize Appearance</a></li>
+<li><a href="#learn-more">Learn More</a></li>
+<li><a href="#get-help-from-ai">Get Help from AI</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!--te-->
+<h2 id="step-1-create-your-repository-1-min">Step 1: Create Your Repository (1 min)</h2>
+<p><strong>⚠️ Important:</strong> Use the <strong>&quot;Use this template&quot;</strong> button, NOT the fork button. This ensures your site is independent and you won't accidentally submit your personal changes back to the al-folio project.</p>
+<ol>
+<li>Go to the <a href="https://github.com/alshedivat/al-folio">al-folio repository</a></li>
+<li>Click the green <strong>&quot;Use this template&quot;</strong> button (top right), then select <strong>&quot;Create a new repository&quot;</strong></li>
+<li>Name your repository:
+<ul>
+<li><strong>Personal/Organization site (if you want your site to be at <code>username.github.io</code>):</strong> <code>username.github.io</code> (replace <code>username</code> with your GitHub username)</li>
+<li><strong>Project site (if you want your site to be at <code>username.github.io/project-name</code>):</strong> Any name (e.g., <code>my-research-website</code>)</li>
+</ul>
+</li>
+<li>Click <strong>&quot;Create repository from template&quot;</strong></li>
+</ol>
+<p><strong>Already forked by mistake?</strong> No problem. Your fork will work fine—just be careful when making changes. Create a new branch for your updates (e.g., <code>git checkout -b my-site-updates</code>) and make sure you push to <strong>your own repository</strong>, not the main al-folio project.</p>
+<h2 id="step-2-configure-deployment-1-min">Step 2: Configure Deployment (1 min)</h2>
+<ol>
+<li>Go to your new repository → <strong>Settings</strong> → <strong>Actions</strong> → <strong>General</strong> → <strong>Workflow permissions</strong></li>
+<li>Select <strong>Read and write permissions</strong></li>
+<li>Click <strong>Save</strong></li>
+</ol>
+<h2 id="step-3-personalize-2-min">Step 3: Personalize (2 min)</h2>
+<ol>
+<li>Open <code>_config.yml</code> in your repository</li>
+<li>Update these fields:
+<pre><code class="language-yaml">title: My Website
+first_name: Your
+last_name: Name
+url: https://your-username.github.io # or your custom domain
+baseurl: # Leave this empty (do NOT delete it)
+</code></pre>
+</li>
+<li>Click <strong>Commit changes</strong> (at the bottom of the page)</li>
+</ol>
+<h2 id="step-4-view-your-site-1-min">Step 4: View Your Site (1 min)</h2>
+<ol>
+<li>Go to your repository → <strong>Actions</strong> tab</li>
+<li>Wait for the &quot;Deploy site&quot; workflow to complete (look for a green checkmark, ~4 minutes)</li>
+<li>Go to <strong>Settings</strong> → <strong>Pages</strong> → <strong>Build and deployment</strong></li>
+<li>Make sure <strong>Source</strong> is set to <strong>Deploy from a branch</strong></li>
+<li>Set the branch to <strong>gh-pages</strong> (NOT main)</li>
+<li>Wait for the &quot;pages-build-deployment&quot; workflow to complete (~45 seconds)</li>
+<li>Visit <code>https://your-username.github.io</code> in your browser</li>
+</ol>
+<p><strong>That's it!</strong> Your site is live. You now have a working al-folio website.</p>
+<hr />
+<h2 id="whats-next">What's Next?</h2>
+<p>Once your site is running, explore these customization options:</p>
+<h3 id="add-your-content">Add Your Content</h3>
+<ul>
+<li><strong>Profile picture:</strong> Replace <code>assets/img/prof_pic.jpg</code> with your photo</li>
+<li><strong>About page:</strong> Edit <code>_pages/about.md</code> to write your bio</li>
+<li><strong>Publications:</strong> Add entries to <code>_bibliography/papers.bib</code></li>
+<li><strong>Blog posts:</strong> Create files in <code>_posts/</code> with format <code>YYYY-MM-DD-title.md</code></li>
+</ul>
+<h3 id="customize-appearance">Customize Appearance</h3>
+<ul>
+<li><strong>Theme color:</strong> Edit <code>_config.yml</code>, search for <code>theme_color</code></li>
+<li><strong>Enable/disable sections:</strong> In <code>_config.yml</code>, look for <code>enabled: false/true</code> options</li>
+<li><strong>Social media links:</strong> Edit <code>_data/socials.yml</code></li>
+</ul>
+<h3 id="learn-more">Learn More</h3>
+<ul>
+<li>Installation and local setup options: <a href="INSTALL.md">INSTALL.md</a></li>
+<li>Full customization guide: <a href="CUSTOMIZE.md">CUSTOMIZE.md</a></li>
+<li>Frequently asked questions: <a href="FAQ.md">FAQ.md</a></li>
+<li>Troubleshooting: <a href="TROUBLESHOOTING.md">TROUBLESHOOTING.md</a></li>
+</ul>
+<h3 id="get-help-from-ai">Get Help from AI</h3>
+<p>Use the <strong>GitHub Copilot Customization Agent</strong> (if you have Copilot) to:</p>
+<ul>
+<li>Get step-by-step help with customizations</li>
+<li>Understand how to modify specific features</li>
+<li>Apply changes directly to your site</li>
+</ul>
+<p>See <a href="CUSTOMIZE.md#github-copilot-customization-agent">CUSTOMIZE.md § GitHub Copilot Customization Agent</a> for details.</p>
+<hr />
+<p><strong>Common first steps:</strong></p>
+<ul>
+<li>Change the theme color in <code>_config.yml</code></li>
+<li>Add your social media links in <code>_data/socials.yml</code></li>
+<li>Upload your profile picture to <code>assets/img/prof_pic.jpg</code></li>
+<li>Write a short bio in <code>_pages/about.md</code></li>
+</ul>
+<p>Happy customizing! 🎉</p>

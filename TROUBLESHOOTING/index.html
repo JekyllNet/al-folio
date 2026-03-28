@@ -1,0 +1,404 @@
+<h1 id="troubleshooting-guide">Troubleshooting Guide</h1>
+<p>This guide covers common issues and their solutions. For more information, see <a href="FAQ.md">FAQ.md</a> or check <a href="https://github.com/alshedivat/al-folio/discussions">GitHub Discussions</a>.</p>
+<!--ts-->
+<ul>
+<li><a href="#troubleshooting-guide">Troubleshooting Guide</a>
+<ul>
+<li><a href="#deployment-issues">Deployment Issues</a>
+<ul>
+<li><a href="#site-fails-to-deploy-on-github-pages">Site fails to deploy on GitHub Pages</a></li>
+<li><a href="#custom-domain-becomes-blank-after-deployment">Custom domain becomes blank after deployment</a></li>
+<li><a href="#github-actions-unknown-tag-toc-error">GitHub Actions: &quot;Unknown tag 'toc'&quot; error</a></li>
+</ul>
+</li>
+<li><a href="#local-build-issues">Local Build Issues</a>
+<ul>
+<li><a href="#docker-build-fails">Docker build fails</a></li>
+<li><a href="#ruby-dependency-issues">Ruby dependency issues</a></li>
+<li><a href="#port-already-in-use">Port already in use</a></li>
+</ul>
+</li>
+<li><a href="#styling--layout-problems">Styling &amp; Layout Problems</a>
+<ul>
+<li><a href="#css-and-js-not-loading-properly">CSS and JS not loading properly</a></li>
+<li><a href="#site-looks-broken-after-deployment">Site looks broken after deployment</a></li>
+<li><a href="#theme-colors-not-applying">Theme colors not applying</a></li>
+</ul>
+</li>
+<li><a href="#content-not-appearing">Content Not Appearing</a>
+<ul>
+<li><a href="#blog-posts-not-showing-up">Blog posts not showing up</a></li>
+<li><a href="#publications-not-displaying">Publications not displaying</a></li>
+<li><a href="#images-not-loading">Images not loading</a></li>
+</ul>
+</li>
+<li><a href="#configuration-issues">Configuration Issues</a>
+<ul>
+<li><a href="#yaml-syntax-errors">YAML syntax errors</a></li>
+<li><a href="#feed-rssatom-not-working">Feed (RSS/Atom) not working</a></li>
+<li><a href="#search-not-working">Search not working</a></li>
+</ul>
+</li>
+<li><a href="#feature-specific-issues">Feature-Specific Issues</a>
+<ul>
+<li><a href="#comments-giscus-not-appearing">Comments (Giscus) not appearing</a></li>
+<li><a href="#related-posts-broken">Related posts broken</a></li>
+<li><a href="#code-formatting-issues">Code formatting issues</a></li>
+</ul>
+</li>
+<li><a href="#getting-help">Getting Help</a></li>
+</ul>
+</li>
+</ul>
+<!--te-->
+<h2 id="deployment-issues">Deployment Issues</h2>
+<h3 id="site-fails-to-deploy-on-github-pages">Site fails to deploy on GitHub Pages</h3>
+<p><strong>Problem:</strong> GitHub Actions shows an error when deploying.</p>
+<p><strong>Solution:</strong></p>
+<ol>
+<li>Check your repository <strong>Actions</strong> tab for error messages</li>
+<li>Ensure you followed <a href="QUICKSTART.md#step-2-configure-deployment-1-min">Step 2 of QUICKSTART.md</a> (Workflow permissions)</li>
+<li>Verify your <code>_config.yml</code> has correct <code>url</code> and <code>baseurl</code>:
+<ul>
+<li>Personal site: <code>url: https://username.github.io</code> and <code>baseurl:</code> (empty)</li>
+<li>Project site: <code>url: https://username.github.io</code> and <code>baseurl: /repo-name/</code></li>
+</ul>
+</li>
+<li>Check that you're pushing to the <code>main</code> (or <code>master</code>) branch, NOT <code>gh-pages</code></li>
+<li>Commit and push a small change to trigger redeployment</li>
+</ol>
+<p><strong>For YAML syntax errors:</strong></p>
+<ul>
+<li>Run <code>bundle exec jekyll build</code> locally to see the exact error</li>
+<li>Check for unquoted special characters (<code>:</code>, <code>&amp;</code>, <code>#</code>) in YAML strings</li>
+</ul>
+<hr />
+<h3 id="custom-domain-becomes-blank-after-deployment">Custom domain becomes blank after deployment</h3>
+<p><strong>Problem:</strong> You set a custom domain (e.g., <code>example.com</code>), but it resets to blank after deployment.</p>
+<p><strong>Solution:</strong></p>
+<ol>
+<li>Create a file named <code>CNAME</code> (no extension) in your repository root</li>
+<li>Add your domain to it: <code>example.com</code> (one domain per line)</li>
+<li>Commit and push</li>
+<li>The domain will persist after future deployments</li>
+</ol>
+<p>(See <a href="INSTALL.md#deployment">DNS configuration instructions in INSTALL.md</a> for initial custom domain setup.)</p>
+<hr />
+<h3 id="github-actions-unknown-tag-toc-error">GitHub Actions: &quot;Unknown tag 'toc'&quot; error</h3>
+<p><strong>Problem:</strong> Local build works, but GitHub Actions fails with <code>Unknown tag 'toc'</code>.</p>
+<p><strong>Solution:</strong></p>
+<ol>
+<li>Check your <strong>Settings</strong> → <strong>Pages</strong> → <strong>Source</strong> is set to <code>Deploy from a branch</code></li>
+<li>Ensure the branch is set to <code>gh-pages</code> (NOT <code>main</code>)</li>
+<li>Wait 5 minutes and check Actions again</li>
+<li>The issue usually resolves after you verify the gh-pages branch is set</li>
+</ol>
+<hr />
+<h2 id="local-build-issues">Local Build Issues</h2>
+<h3 id="docker-build-fails">Docker build fails</h3>
+<p><strong>Problem:</strong> <code>docker compose up</code> fails or shows errors.</p>
+<p><strong>Solution:</strong></p>
+<ol>
+<li>Update Docker: <code>docker compose pull</code></li>
+<li>Rebuild: <code>docker compose up --build</code></li>
+<li>If still failing, check your system resources (disk space, RAM)</li>
+<li>For M1/M2 Mac users, verify you're using a compatible Docker version</li>
+<li>Check Docker Desktop is running</li>
+</ol>
+<p><strong>For permission issues:</strong></p>
+<ul>
+<li>Linux users may need to add your user to the docker group: <code>sudo usermod -aG docker $USER</code></li>
+<li>Then log out and log back in</li>
+</ul>
+<hr />
+<h3 id="ruby-dependency-issues">Ruby dependency issues</h3>
+<p><strong>Problem:</strong> <code>Gemfile.lock</code> conflicts or bundle errors.</p>
+<p><strong>Solution:</strong></p>
+<ol>
+<li>Delete <code>Gemfile.lock</code>: <code>rm Gemfile.lock</code></li>
+<li>Update Bundler: <code>bundle update</code></li>
+<li>Install gems: <code>bundle install</code></li>
+<li>Try serving again: <code>bundle exec jekyll serve</code></li>
+</ol>
+<hr />
+<h3 id="port-already-in-use">Port already in use</h3>
+<p><strong>Problem:</strong> &quot;Address already in use&quot; when running <code>jekyll serve</code>.</p>
+<p><strong>Solution - Docker:</strong></p>
+<pre><code class="language-bash">docker compose down  # Stop the running container
+docker compose up    # Start fresh
+</code></pre>
+<p><strong>Solution - Local Ruby:</strong></p>
+<pre><code class="language-bash"># Find and kill the Jekyll process
+lsof -i :4000 | grep LISTEN | awk '{print $2}' | xargs kill
+
+# Or specify a different port
+bundle exec jekyll serve --port 5000
+</code></pre>
+<hr />
+<h2 id="styling-layout-problems">Styling &amp; Layout Problems</h2>
+<h3 id="css-and-js-not-loading-properly">CSS and JS not loading properly</h3>
+<p><strong>Problem:</strong> Site looks broken: no colors, fonts wrong, links don't work.</p>
+<p><strong>Common cause:</strong> Incorrect <code>url</code> and <code>baseurl</code> in <code>_config.yml</code>.</p>
+<p><strong>Solution:</strong></p>
+<ol>
+<li><p><strong>Personal/organization site:</strong></p>
+<pre><code class="language-yaml">url: https://username.github.io
+baseurl: # MUST be empty (not deleted)
+</code></pre>
+</li>
+<li><p><strong>Project site:</strong></p>
+<pre><code class="language-yaml">url: https://username.github.io
+baseurl: /repository-name/ # Must match your repo name
+</code></pre>
+</li>
+<li><p><strong>Clear browser cache:</strong></p>
+<ul>
+<li>Chrome: <code>Ctrl+Shift+R</code> (Windows/Linux) or <code>Cmd+Shift+R</code> (Mac)</li>
+<li>Firefox: <code>Ctrl+F5</code> (Windows/Linux) or <code>Cmd+R</code> (Mac)</li>
+<li>Or open a private/incognito window</li>
+</ul>
+</li>
+<li><p>Redeploy: Make a small change and push to trigger GitHub Actions again</p>
+</li>
+</ol>
+<hr />
+<h3 id="site-looks-broken-after-deployment">Site looks broken after deployment</h3>
+<p><strong>Checklist:</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Is <code>baseurl</code> correct (and not accidentally deleted)?</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Did you clear your browser cache?</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Wait 5 minutes for GitHub Pages to update</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Check GitHub Actions completed successfully</li>
+</ul>
+<hr />
+<h3 id="theme-colors-not-applying">Theme colors not applying</h3>
+<p><strong>Problem:</strong> You changed <code>_config.yml</code> color settings but nothing changed.</p>
+<p><strong>Solution:</strong></p>
+<ol>
+<li>Check your color name is valid in <code>_sass/_variables.scss</code></li>
+<li>Clear browser cache (see above)</li>
+<li>Rebuild: <code>docker compose up --build</code> (Docker) or <code>bundle exec jekyll build</code> (Ruby)</li>
+<li>Wait for GitHub Actions to complete</li>
+<li>Visit the site in a private/incognito window</li>
+</ol>
+<hr />
+<h2 id="content-not-appearing">Content Not Appearing</h2>
+<h3 id="blog-posts-not-showing-up">Blog posts not showing up</h3>
+<p><strong>Problem:</strong> Created a post in <code>_posts/</code> but it's not on the blog page.</p>
+<p><strong>Checklist:</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Filename format is correct: <code>YYYY-MM-DD-title.md</code> (e.g., <code>2024-01-15-my-post.md</code>)</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> File is in the <code>_posts/</code> directory (not in a subdirectory)</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Post has required frontmatter:
+<pre><code class="language-markdown">---
+layout: post
+title: My Post Title
+date: 2024-01-15
+---
+</code></pre>
+</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Post date is NOT in the future (Jekyll doesn't publish future-dated posts by default)</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Blog posts are enabled in <code>_config.yml</code>: <code>blog_page: true</code></li>
+</ul>
+<p><strong>To fix:</strong></p>
+<ol>
+<li>Check the filename format (uppercase, dashes, no spaces)</li>
+<li>Verify the date is today or in the past</li>
+<li>Rebuild: <code>bundle exec jekyll build</code> and check for error messages</li>
+</ol>
+<hr />
+<h3 id="publications-not-displaying">Publications not displaying</h3>
+<p><strong>Problem:</strong> You added a BibTeX entry to <code>papers.bib</code> but it's not showing on the publications page.</p>
+<p><strong>Checklist:</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> File is at <code>_bibliography/papers.bib</code></li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> BibTeX syntax is correct (check for missing commas, unmatched braces)</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Entry has a unique citation key: <code>@article{einstein1905, ...}</code></li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Publication page is enabled: Check <code>publications_page: true</code> in <code>_config.yml</code></li>
+</ul>
+<p><strong>To debug BibTeX errors:</strong></p>
+<pre><code class="language-bash"># Local Ruby setup
+bundle exec jekyll build 2&gt;&amp;1 | grep -i bibtex
+
+# Docker
+docker compose run --rm web jekyll build 2&gt;&amp;1 | grep -i bibtex
+</code></pre>
+<hr />
+<h3 id="images-not-loading">Images not loading</h3>
+<p><strong>Problem:</strong> Image paths broken or showing as missing.</p>
+<p><strong>Common causes:</strong></p>
+<ul>
+<li>Wrong path in Markdown (use relative paths)</li>
+<li>Image file doesn't exist at the specified location</li>
+<li>Case sensitivity (Linux/Mac are case-sensitive)</li>
+</ul>
+<p><strong>Solutions:</strong></p>
+<ol>
+<li><p><strong>Correct path format:</strong></p>
+<pre><code class="language-markdown">![Alt text](assets/img/image-name.jpg)
+</code></pre>
+</li>
+<li><p><strong>Check the file exists:</strong></p>
+<ul>
+<li>Personal images: <code>assets/img/</code></li>
+<li>Paper PDFs: <code>assets/pdf/</code></li>
+<li>Use lowercase filenames, no spaces</li>
+</ul>
+</li>
+<li><p><strong>For BibTeX PDF links:</strong></p>
+<pre><code class="language-bibtex">@article{mykey,
+  pdf={my-paper.pdf},  % File should be at assets/pdf/my-paper.pdf
+}
+</code></pre>
+</li>
+</ol>
+<hr />
+<h2 id="configuration-issues">Configuration Issues</h2>
+<h3 id="yaml-syntax-errors">YAML syntax errors</h3>
+<p><strong>Problem:</strong> GitHub Actions fails with YAML error, or build is silent.</p>
+<p><strong>Common mistakes:</strong></p>
+<pre><code class="language-yaml"># ❌ Wrong: Unquoted colons or ampersands
+title: My Site: Research &amp; Teaching
+
+# ✅ Correct: Quote special characters
+title: &quot;My Site: Research &amp; Teaching&quot;
+</code></pre>
+<pre><code class="language-yaml"># ❌ Wrong: Inconsistent indentation
+nav:
+- name: Home
+  url: /
+ - name: About  # Extra space!
+  url: /about/
+
+# ✅ Correct: Consistent 2-space indentation
+nav:
+  - name: Home
+    url: /
+  - name: About
+    url: /about/
+</code></pre>
+<p><strong>To find errors:</strong></p>
+<ol>
+<li>Use a YAML validator: <a href="https://www.yamllint.com/">yamllint.com</a></li>
+<li>Run locally: <code>bundle exec jekyll build</code> shows the exact error line</li>
+<li>Check that you didn't delete required lines (like <code>baseurl:</code>)</li>
+</ol>
+<hr />
+<h3 id="feed-rssatom-not-working">Feed (RSS/Atom) not working</h3>
+<p><strong>Problem:</strong> RSS feed at <code>/feed.xml</code> is empty or broken.</p>
+<p><strong>Solution:</strong></p>
+<ol>
+<li>Verify required <code>_config.yml</code> fields:
+<pre><code class="language-yaml">title: Your Site Title
+description: Brief description
+url: https://your-domain.com # MUST be absolute URL
+</code></pre>
+</li>
+<li>Ensure <code>baseurl</code> is correct</li>
+<li>Check at least one blog post exists (with correct date)</li>
+<li>Rebuild and wait for GitHub Actions to complete</li>
+</ol>
+<hr />
+<h3 id="search-not-working">Search not working</h3>
+<p><strong>Problem:</strong> Search box is empty or always returns nothing.</p>
+<p><strong>Solution:</strong></p>
+<ol>
+<li>Ensure search is enabled in <code>_config.yml</code>:
+<pre><code class="language-yaml">search_enabled: true
+</code></pre>
+</li>
+<li>Check that <code>_config.yml</code> has a valid <code>url</code> (required for search)</li>
+<li>Rebuild the site</li>
+<li>Search index is generated during build; give it a minute after push</li>
+</ol>
+<hr />
+<h2 id="feature-specific-issues">Feature-Specific Issues</h2>
+<h3 id="comments-giscus-not-appearing">Comments (Giscus) not appearing</h3>
+<p><strong>Problem:</strong> You enabled Giscus in <code>_config.yml</code> but comments don't show.</p>
+<p><strong>Solution:</strong></p>
+<ol>
+<li>Verify you have a GitHub repository for discussions (usually your main repo)</li>
+<li>Check <code>_config.yml</code> has correct settings:
+<pre><code class="language-yaml">disqus_shortname: false # Make sure this is false
+giscus:
+  repo: username/repo-name
+  repo_id: YOUR_REPO_ID
+  category_id: YOUR_CATEGORY_ID
+</code></pre>
+</li>
+<li>Visit <a href="https://giscus.app">Giscus.app</a> to get your IDs and verify setup</li>
+<li>Check the GitHub repo has Discussions enabled (Settings → Features)</li>
+</ol>
+<hr />
+<h3 id="related-posts-broken">Related posts broken</h3>
+<p><strong>Problem:</strong> Related posts feature crashes or shows errors.</p>
+<p><strong>Solution:</strong></p>
+<ol>
+<li>Related posts requires more gems. If you disabled it in <code>_config.yml</code>, that's fine:
+<pre><code class="language-yaml">related_blog_posts:
+  enabled: false
+</code></pre>
+</li>
+<li>If you want to enable it, ensure <code>Gemfile</code> has all dependencies installed:
+<pre><code class="language-bash">bundle install
+bundle exec jekyll build
+</code></pre>
+</li>
+</ol>
+<hr />
+<h3 id="code-formatting-issues">Code formatting issues</h3>
+<p><strong>Problem:</strong> Code blocks don't have syntax highlighting or look wrong.</p>
+<p><strong>Solution:</strong></p>
+<ol>
+<li><p>Use proper markdown syntax:</p>
+<pre><code class="language-markdown">```python
+# Your code here
+print(&quot;hello&quot;)
+```
+</code></pre>
+</li>
+<li><p>For inline code:</p>
+<pre><code class="language-markdown">Use `code-here` for inline code.
+</code></pre>
+</li>
+<li><p>Check that your language is supported by Pygments (Python, Ruby, JavaScript, etc. are all supported)</p>
+</li>
+</ol>
+<hr />
+<h2 id="getting-help">Getting Help</h2>
+<p>If you're stuck:</p>
+<ol>
+<li><p><strong>Check existing documentation:</strong></p>
+<ul>
+<li><a href="QUICKSTART.md">QUICKSTART.md</a> – Get started in 5 minutes</li>
+<li><a href="INSTALL.md">INSTALL.md</a> – Installation and deployment</li>
+<li><a href="CUSTOMIZE.md">CUSTOMIZE.md</a> – Full customization guide</li>
+<li><a href="FAQ.md">FAQ.md</a> – Frequently asked questions</li>
+</ul>
+</li>
+<li><p><strong>Search for your issue:</strong></p>
+<ul>
+<li><a href="https://github.com/alshedivat/al-folio/discussions">GitHub Discussions</a> – Q&amp;A from community</li>
+<li><a href="https://github.com/alshedivat/al-folio/issues">GitHub Issues</a> – Bug reports and feature requests</li>
+</ul>
+</li>
+<li><p><strong>Get help from AI:</strong></p>
+<ul>
+<li>Use the <strong>GitHub Copilot Customization Agent</strong> (requires Copilot subscription) to get step-by-step help</li>
+<li>See <a href="CUSTOMIZE.md#github-copilot-customization-agent">CUSTOMIZE.md § GitHub Copilot Customization Agent</a></li>
+</ul>
+</li>
+<li><p><strong>Create a new discussion:</strong></p>
+<ul>
+<li><a href="https://github.com/alshedivat/al-folio/discussions/new?category=q-a">Ask a question</a> on GitHub</li>
+<li>Include error messages and what you're trying to do</li>
+</ul>
+</li>
+</ol>
+<hr />
+<p><strong>Most issues are resolved by:</strong></p>
+<ol>
+<li>Checking <code>url</code> and <code>baseurl</code> in <code>_config.yml</code></li>
+<li>Clearing browser cache</li>
+<li>Waiting for GitHub Actions to complete (~5 minutes)</li>
+</ol>

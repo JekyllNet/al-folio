@@ -1,0 +1,93 @@
+<h1 id="agent-guidelines-for-al-folio">Agent Guidelines for al-folio</h1>
+<p>A simple, clean, and responsive Jekyll theme for academics.</p>
+<h2 id="quick-links-by-role">Quick Links by Role</h2>
+<ul>
+<li><strong>Are you a coding agent?</strong> → Read <a href=".github/copilot-instructions.md"><code>.github/copilot-instructions.md</code></a> first (tech stack, build, CI/CD, common pitfalls &amp; solutions)</li>
+<li><strong>Customizing the site?</strong> → See <a href=".github/agents/customize.agent.md"><code>.github/agents/customize.agent.md</code></a></li>
+<li><strong>Writing documentation?</strong> → See <a href=".github/agents/docs.agent.md"><code>.github/agents/docs.agent.md</code></a></li>
+<li><strong>Need setup/deployment help?</strong> → <a href="INSTALL.md">INSTALL.md</a></li>
+<li><strong>Troubleshooting &amp; FAQ?</strong> → <a href="TROUBLESHOOTING.md">TROUBLESHOOTING.md</a></li>
+<li><strong>Customization &amp; theming?</strong> → <a href="CUSTOMIZE.md">CUSTOMIZE.md</a></li>
+<li><strong>Quick 5-min start?</strong> → <a href="QUICKSTART.md">QUICKSTART.md</a></li>
+</ul>
+<h2 id="essential-commands">Essential Commands</h2>
+<h3 id="local-development-docker">Local Development (Docker)</h3>
+<p>The recommended approach is using Docker.</p>
+<pre><code class="language-bash"># Initial setup &amp; start dev server
+docker compose pull &amp;&amp; docker compose up
+# Site runs at http://localhost:8080
+
+# Rebuild after changing dependencies or Dockerfile
+docker compose up --build
+
+# Stop containers and free port 8080
+docker compose down
+</code></pre>
+<h3 id="pre-commit-checklist">Pre-Commit Checklist</h3>
+<p>Before every commit, you <strong>must</strong> run these steps:</p>
+<ol>
+<li><p><strong>Format Code:</strong></p>
+<pre><code class="language-bash"># (First time only)
+npm install --save-dev prettier @shopify/prettier-plugin-liquid
+# Format all files
+npx prettier . --write
+</code></pre>
+</li>
+<li><p><strong>Build Locally &amp; Verify:</strong></p>
+<pre><code class="language-bash"># Rebuild the site
+docker compose up --build
+
+# Verify by visiting http://localhost:8080.
+# Check navigation, pages, images, and dark mode.
+</code></pre>
+</li>
+</ol>
+<h2 id="critical-configuration">Critical Configuration</h2>
+<p>When modifying <code>_config.yml</code>, these <strong>must be updated together</strong>:</p>
+<ul>
+<li><strong>Personal site:</strong> <code>url: https://username.github.io</code> + <code>baseurl:</code> (empty)</li>
+<li><strong>Project site:</strong> <code>url: https://username.github.io</code> + <code>baseurl: /repo-name/</code></li>
+<li><strong>YAML errors:</strong> Quote strings with special characters: <code>title: &quot;My: Cool Site&quot;</code></li>
+</ul>
+<h2 id="development-workflow">Development Workflow</h2>
+<ul>
+<li><strong>Git &amp; Commits:</strong> For commit message format and Git practices, see <a href=".github/GIT_WORKFLOW.md">.github/GIT_WORKFLOW.md</a>.</li>
+<li><strong>Code-Specific Instructions:</strong> Consult the relevant instruction file for your code type.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>File Type</th>
+<th>Instruction File</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Markdown content (<code>_posts/</code>, <code>_pages/</code>, etc.)</td>
+<td><a href=".github/instructions/markdown-content.instructions.md">markdown-content.instructions.md</a></td>
+</tr>
+<tr>
+<td>YAML config (<code>_config.yml</code>, <code>_data/</code>)</td>
+<td><a href=".github/instructions/yaml-configuration.instructions.md">yaml-configuration.instructions.md</a></td>
+</tr>
+<tr>
+<td>BibTeX (<code>_bibliography/</code>)</td>
+<td><a href=".github/instructions/bibtex-bibliography.instructions.md">bibtex-bibliography.instructions.md</a></td>
+</tr>
+<tr>
+<td>Liquid templates (<code>_includes/</code>, <code>_layouts/</code>)</td>
+<td><a href=".github/instructions/liquid-templates.instructions.md">liquid-templates.instructions.md</a></td>
+</tr>
+<tr>
+<td>JavaScript (<code>_scripts/</code>)</td>
+<td><a href=".github/instructions/javascript-scripts.instructions.md">javascript-scripts.instructions.md</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="common-issues">Common Issues</h2>
+<p>For troubleshooting, see:</p>
+<ul>
+<li><a href=".github/copilot-instructions.md#common-pitfalls--workarounds">Common Pitfalls &amp; Workarounds</a> in copilot-instructions.md</li>
+<li><a href="TROUBLESHOOTING.md">TROUBLESHOOTING.md</a> for detailed solutions</li>
+<li><a href="https://github.com/alshedivat/al-folio/issues">GitHub Issues</a> to search for your specific problem.</li>
+</ul>

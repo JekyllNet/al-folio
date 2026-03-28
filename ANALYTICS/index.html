@@ -1,0 +1,221 @@
+<h1 id="analytics-setup-guide">Analytics Setup Guide</h1>
+<p>This guide helps you add website analytics to track visitor statistics and behavior.</p>
+<!--ts-->
+<ul>
+<li><a href="#analytics-setup-guide">Analytics Setup Guide</a>
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#supported-analytics-services">Supported Analytics Services</a></li>
+<li><a href="#google-analytics">Google Analytics</a>
+<ul>
+<li><a href="#setup-steps">Setup Steps</a></li>
+</ul>
+</li>
+<li><a href="#privacy-friendly-alternatives">Privacy-Friendly Alternatives</a>
+<ul>
+<li><a href="#pirsch-analytics">Pirsch Analytics</a></li>
+<li><a href="#openpanel-analytics">Openpanel Analytics</a></li>
+</ul>
+</li>
+<li><a href="#monitoring--performance">Monitoring &amp; Performance</a>
+<ul>
+<li><a href="#cronitor">Cronitor</a></li>
+</ul>
+</li>
+<li><a href="#gdpr-and-privacy-considerations">GDPR and Privacy Considerations</a>
+<ul>
+<li><a href="#gdpr-checklist">GDPR Checklist</a></li>
+<li><a href="#privacy-first-services-no-gdpr-cookie-banner-needed">Privacy-first services (No GDPR cookie banner needed)</a></li>
+<li><a href="#services-requiring-cookie-consent">Services requiring cookie consent</a></li>
+</ul>
+</li>
+<li><a href="#comparing-analytics-services">Comparing Analytics Services</a></li>
+<li><a href="#next-steps">Next Steps</a></li>
+</ul>
+</li>
+</ul>
+<!--te-->
+<h2 id="overview">Overview</h2>
+<p>Analytics help you understand your website visitors: where they come from, which pages they visit, and how they interact with your content. al-folio supports several analytics providers that you can enable in <code>_config.yml</code>.</p>
+<h2 id="supported-analytics-services">Supported Analytics Services</h2>
+<p>Currently implemented in al-folio:</p>
+<ul>
+<li><strong>Google Analytics</strong> – Free, feature-rich, but collects user data</li>
+<li><strong>Pirsch Analytics</strong> – GDPR-compliant, free tier available, European servers</li>
+<li><strong>Openpanel Analytics</strong> – Open-source option, privacy-focused</li>
+<li><strong>Cronitor</strong> – Uptime monitoring with Real User Monitoring (RUM) analytics</li>
+</ul>
+<hr />
+<h2 id="google-analytics">Google Analytics</h2>
+<p>Google Analytics is free and widely used. It provides detailed insights into visitor behavior.</p>
+<h3 id="setup-steps">Setup Steps</h3>
+<ol>
+<li><p><strong>Create a Google Analytics account:</strong></p>
+<ul>
+<li>Visit <a href="https://analytics.google.com">Google Analytics</a></li>
+<li>Sign in with your Google account</li>
+<li>Click <strong>Start measuring</strong> → <strong>Create account</strong></li>
+</ul>
+</li>
+<li><p><strong>Create a property for your website:</strong></p>
+<ul>
+<li>Enter your website name and URL</li>
+<li>Accept terms and continue</li>
+<li>Choose your timezone and currency</li>
+</ul>
+</li>
+<li><p><strong>Get your Measurement ID:</strong></p>
+<ul>
+<li>In the left sidebar, go to <strong>Admin</strong> → <strong>Properties</strong></li>
+<li>Click <strong>Data Streams</strong> → <strong>Web</strong> (or your existing stream)</li>
+<li>Copy the <strong>Measurement ID</strong> (format: <code>G-XXXXXXXXXX</code>)</li>
+</ul>
+</li>
+<li><p><strong>Enable in your site:</strong></p>
+<ul>
+<li>Open <code>_config.yml</code> in your repository</li>
+<li>Set <code>enable_google_analytics: true</code></li>
+<li>Add your Measurement ID: <code>google_analytics: G-XXXXXXXXXX</code></li>
+<li>Commit and push</li>
+</ul>
+</li>
+<li><p><strong>Verify it's working:</strong></p>
+<ul>
+<li>Visit your website</li>
+<li>Go back to Google Analytics → <strong>Real-time</strong> tab</li>
+<li>You should see your visit appear within a few seconds</li>
+</ul>
+</li>
+</ol>
+<p><strong>Note:</strong> Google Analytics takes 24-48 hours to start showing data trends.</p>
+<hr />
+<h2 id="privacy-friendly-alternatives">Privacy-Friendly Alternatives</h2>
+<p>If you're concerned about user privacy or GDPR compliance, consider these alternatives:</p>
+<h3 id="pirsch-analytics">Pirsch Analytics</h3>
+<p><strong>Best for:</strong> GDPR-compliant analytics without complex setup</p>
+<p><strong>Features:</strong></p>
+<ul>
+<li>✅ GDPR compliant</li>
+<li>✅ European servers</li>
+<li>✅ Free tier available</li>
+<li>✅ Simple integration</li>
+<li>✅ No cookie consent needed</li>
+</ul>
+<p><strong>Setup:</strong></p>
+<ol>
+<li>Sign up at <a href="https://pirsch.io">Pirsch.io</a></li>
+<li>Add your domain</li>
+<li>Copy the tracking code</li>
+<li>In <code>_config.yml</code>, set <code>enable_pirsch_analytics: true</code></li>
+<li>Add your Site ID: <code>pirsch_analytics: YOUR_SITE_ID</code> (format: 32 characters)</li>
+<li>Commit and push</li>
+</ol>
+<p>(The site ID appears in your Pirsch dashboard.)</p>
+<hr />
+<h3 id="openpanel-analytics">Openpanel Analytics</h3>
+<p><strong>Best for:</strong> Open-source and privacy-conscious developers</p>
+<p><strong>Features:</strong></p>
+<ul>
+<li>✅ Open-source</li>
+<li>✅ Self-hosted option available</li>
+<li>✅ Privacy-focused</li>
+<li>✅ Modern dashboard</li>
+</ul>
+<p><strong>Setup:</strong></p>
+<ol>
+<li>Sign up at <a href="https://openpanel.dev">Openpanel.dev</a></li>
+<li>Create a project for your website</li>
+<li>Get your <strong>Client ID</strong></li>
+<li>In <code>_config.yml</code>, set <code>enable_openpanel_analytics: true</code></li>
+<li>Add your Client ID: <code>openpanel_analytics: YOUR_CLIENT_ID</code> (format: UUID)</li>
+<li>Commit and push</li>
+</ol>
+<hr />
+<h2 id="monitoring-performance">Monitoring &amp; Performance</h2>
+<h3 id="cronitor">Cronitor</h3>
+<p>Cronitor is an <strong>uptime monitoring</strong> service with RUM (Real User Monitoring) analytics.</p>
+<p><strong>Best for:</strong> Tracking if your site is online + basic performance metrics</p>
+<p><strong>Setup:</strong></p>
+<ol>
+<li>Create account at <a href="https://cronitor.io">Cronitor.io</a></li>
+<li>Get your <strong>Site ID</strong></li>
+<li>In <code>_config.yml</code>, set <code>enable_cronitor_analytics: true</code></li>
+<li>Add your Site ID: <code>cronitor_analytics: YOUR_SITE_ID</code></li>
+<li>Commit and push</li>
+</ol>
+<hr />
+<h2 id="gdpr-and-privacy-considerations">GDPR and Privacy Considerations</h2>
+<p>If you're in the European Union or serve EU visitors, consider GDPR requirements:</p>
+<h3 id="gdpr-checklist">GDPR Checklist</h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> If using Google Analytics: Add cookie consent banner</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Display a privacy policy explaining what analytics you use</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Allow users to opt-out if using tracking cookies</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Use privacy-first alternatives when possible</li>
+</ul>
+<h3 id="privacy-first-services-no-gdpr-cookie-banner-needed">Privacy-first services (No GDPR cookie banner needed)</h3>
+<ul>
+<li>✅ Pirsch Analytics</li>
+<li>✅ Openpanel Analytics</li>
+</ul>
+<h3 id="services-requiring-cookie-consent">Services requiring cookie consent</h3>
+<ul>
+<li>❌ Google Analytics (EU users must consent first)</li>
+<li>❌ Cronitor (collects user data via RUM)</li>
+</ul>
+<hr />
+<h2 id="comparing-analytics-services">Comparing Analytics Services</h2>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Free</th>
+<th>GDPR</th>
+<th>Setup</th>
+<th>Features</th>
+<th>Best for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Google Analytics</strong></td>
+<td>✅</td>
+<td>⚠️ Requires consent</td>
+<td>Easy</td>
+<td>Detailed reports</td>
+<td>Detailed tracking</td>
+</tr>
+<tr>
+<td><strong>Pirsch</strong></td>
+<td>✅ Free tier</td>
+<td>✅</td>
+<td>Easy</td>
+<td>Balanced</td>
+<td>GDPR compliance</td>
+</tr>
+<tr>
+<td><strong>Openpanel</strong></td>
+<td>✅</td>
+<td>✅</td>
+<td>Medium</td>
+<td>Modern dashboard</td>
+<td>Privacy-focused developers</td>
+</tr>
+<tr>
+<td><strong>Cronitor</strong></td>
+<td>Paid</td>
+<td>⚠️ Requires consent</td>
+<td>Easy</td>
+<td>Uptime + RUM</td>
+<td>Uptime monitoring</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="next-steps">Next Steps</h2>
+<ol>
+<li><strong>Choose a service</strong> based on your needs (privacy, features, budget)</li>
+<li><strong>Follow the setup guide</strong> for your chosen service</li>
+<li><strong>Verify it's working</strong> by visiting your site and checking the analytics dashboard</li>
+</ol>
+<p>For more customization help, see <a href="CUSTOMIZE.md">CUSTOMIZE.md</a>.</p>

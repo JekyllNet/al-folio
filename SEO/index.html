@@ -1,0 +1,477 @@
+<h1 id="seo-best-practices-guide">SEO Best Practices Guide</h1>
+<p>This guide helps you optimize your al-folio website for search engines so your research and work are discoverable.</p>
+<!--ts-->
+<ul>
+<li><a href="#seo-best-practices-guide">SEO Best Practices Guide</a>
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#basic-seo-setup">Basic SEO Setup</a>
+<ul>
+<li><a href="#sitemap-and-robots">Sitemap and Robots</a></li>
+<li><a href="#site-url-and-metadata">Site URL and Metadata</a></li>
+</ul>
+</li>
+<li><a href="#enabling-open-graph-social-media-previews">Enabling Open Graph (Social Media Previews)</a>
+<ul>
+<li><a href="#what-is-open-graph">What is Open Graph?</a></li>
+<li><a href="#enable-in-al-folio">Enable in al-folio</a></li>
+</ul>
+</li>
+<li><a href="#schemaorg-markup">Schema.org Markup</a>
+<ul>
+<li><a href="#what-is-schemaorg">What is Schema.org?</a></li>
+<li><a href="#enable-in-al-folio-1">Enable in al-folio</a></li>
+<li><a href="#what-gets-marked-up">What Gets Marked Up</a></li>
+</ul>
+</li>
+<li><a href="#search-console-setup">Search Console Setup</a>
+<ul>
+<li><a href="#google-search-console">Google Search Console</a></li>
+<li><a href="#bing-webmaster-tools">Bing Webmaster Tools</a></li>
+</ul>
+</li>
+<li><a href="#publication-indexing">Publication Indexing</a>
+<ul>
+<li><a href="#google-scholar">Google Scholar</a></li>
+<li><a href="#dblp-computer-science">DBLP (Computer Science)</a></li>
+<li><a href="#arxiv">arXiv</a></li>
+</ul>
+</li>
+<li><a href="#content-optimization">Content Optimization</a>
+<ul>
+<li><a href="#page-titles-and-descriptions">Page Titles and Descriptions</a></li>
+<li><a href="#heading-structure">Heading Structure</a></li>
+<li><a href="#image-optimization">Image Optimization</a></li>
+<li><a href="#internal-linking">Internal Linking</a></li>
+</ul>
+</li>
+<li><a href="#rss-feed-for-discovery">RSS Feed for Discovery</a></li>
+<li><a href="#performance--mobile">Performance &amp; Mobile</a></li>
+<li><a href="#seo-checklist">SEO Checklist</a></li>
+<li><a href="#resources">Resources</a></li>
+</ul>
+</li>
+</ul>
+<!--te-->
+<h2 id="overview">Overview</h2>
+<p>SEO (Search Engine Optimization) makes your website discoverable on Google, Bing, and other search engines. For academics, this means:</p>
+<ul>
+<li>Your research becomes discoverable when people search for your work</li>
+<li>Your CV/bio appears in search results</li>
+<li>Your publications rank higher</li>
+<li>More citations and collaborations</li>
+</ul>
+<p>al-folio includes SEO basics, but you can optimize further.</p>
+<hr />
+<h2 id="basic-seo-setup">Basic SEO Setup</h2>
+<h3 id="sitemap-and-robots">Sitemap and Robots</h3>
+<p>al-folio auto-generates a <code>sitemap.xml</code> and <code>robots.txt</code> for you. These tell search engines what pages exist.</p>
+<p><strong>Verify they exist:</strong></p>
+<ul>
+<li>Visit <code>https://your-site.com/sitemap.xml</code> – Should show an XML list of pages</li>
+<li>Visit <code>https://your-site.com/robots.txt</code> – Should show instructions for search engines</li>
+</ul>
+<p>If they're missing:</p>
+<ol>
+<li>Check <code>_config.yml</code> has a valid <code>url</code></li>
+<li>Rebuild: <code>bundle exec jekyll build</code></li>
+<li>Check <code>_site/</code> directory has both files</li>
+</ol>
+<p><strong>No configuration needed</strong> – al-folio handles this automatically.</p>
+<hr />
+<h3 id="site-url-and-metadata">Site URL and Metadata</h3>
+<p>Ensure <code>_config.yml</code> has correct metadata:</p>
+<pre><code class="language-yaml">title: Your Full Name or Site Title
+description: &gt; # Brief description (1-2 sentences)
+  A description of your research and expertise.
+  This appears in search results.
+author: Your Name
+keywords: machine learning, research, academia, etc.
+url: https://your-domain.com
+lang: en
+</code></pre>
+<p>All fields are important for SEO. <strong>Avoid leaving fields blank.</strong></p>
+<hr />
+<h2 id="enabling-open-graph-social-media-previews">Enabling Open Graph (Social Media Previews)</h2>
+<h3 id="what-is-open-graph">What is Open Graph?</h3>
+<p>When someone shares your page on Twitter, Facebook, LinkedIn, etc., Open Graph controls what preview appears.</p>
+<p><strong>Without Open Graph:</strong></p>
+<ul>
+<li>Generic title</li>
+<li>No image</li>
+<li>Ugly preview</li>
+</ul>
+<p><strong>With Open Graph:</strong></p>
+<ul>
+<li>Your custom title</li>
+<li>Your custom image (photo, diagram, etc.)</li>
+<li>Custom description</li>
+<li>Professional preview</li>
+</ul>
+<h3 id="enable-in-al-folio">Enable in al-folio</h3>
+<p>Open Graph is disabled by default. To enable:</p>
+<ol>
+<li><p><strong>Edit <code>_config.yml</code>:</strong></p>
+<pre><code class="language-yaml">serve_og_meta: true # Change from false to true
+og_image: /assets/img/og-image.png # Path to your image (1200x630px recommended)
+</code></pre>
+</li>
+<li><p><strong>Create your OG image:</strong></p>
+<ul>
+<li>Size: 1200x630 pixels</li>
+<li>Format: PNG or JPG</li>
+<li>Content: Your name/logo + key info</li>
+<li>Save to: <code>assets/img/og-image.png</code></li>
+</ul>
+</li>
+<li><p><strong>Commit and deploy</strong></p>
+</li>
+<li><p><strong>Test it:</strong></p>
+<ul>
+<li>Use <a href="https://developers.facebook.com/tools/debug/sharing/">Facebook's Sharing Debugger</a></li>
+<li>Paste your site URL</li>
+<li>You should see your custom image and title</li>
+</ul>
+</li>
+</ol>
+<p><strong>Per-page OG images:</strong></p>
+<p>Add to the frontmatter of a blog post or page:</p>
+<pre><code class="language-markdown">---
+layout: post
+title: My Research Paper
+og_image: /assets/img/paper-diagram.png
+---
+</code></pre>
+<hr />
+<h2 id="schema.org-markup">Schema.org Markup</h2>
+<h3 id="what-is-schema.org">What is Schema.org?</h3>
+<p>Schema.org is structured data that tells search engines what kind of content is on your page:</p>
+<ul>
+<li>&quot;This is a Person&quot; (your bio page)</li>
+<li>&quot;This is a Publication&quot; (your paper)</li>
+<li>&quot;This is a BlogPosting&quot; (your article)</li>
+</ul>
+<p>Benefits:</p>
+<ul>
+<li>Rich snippets in search results</li>
+<li>Better knowledge graph information</li>
+<li>Schema validation helps Google understand your site</li>
+</ul>
+<h3 id="enable-in-al-folio-1">Enable in al-folio</h3>
+<p>Enable in <code>_config.yml</code>:</p>
+<pre><code class="language-yaml">serve_schema_org: true # Change from false to true
+</code></pre>
+<p>That's it! al-folio automatically marks up:</p>
+<ul>
+<li><strong>Author info</strong> (Person schema with name, URL, photo)</li>
+<li><strong>Blog posts</strong> (BlogPosting schema with date, title, description)</li>
+<li><strong>Publications</strong> (CreativeWork/ScholarlyArticle schema)</li>
+</ul>
+<h3 id="what-gets-marked-up">What Gets Marked Up</h3>
+<p><strong>Homepage (Person):</strong></p>
+<ul>
+<li>Your name, photo, description</li>
+<li>Links to your profiles (LinkedIn, GitHub, etc.)</li>
+</ul>
+<p><strong>Blog posts (BlogPosting):</strong></p>
+<ul>
+<li>Title, date, author, description</li>
+<li>Content</li>
+<li>Publication date and modified date</li>
+</ul>
+<p><strong>Publications (ScholarlyArticle):</strong></p>
+<ul>
+<li>Title, authors, abstract</li>
+<li>Publication date, venue</li>
+<li>URL and PDF links</li>
+</ul>
+<hr />
+<h2 id="search-console-setup">Search Console Setup</h2>
+<h3 id="google-search-console">Google Search Console</h3>
+<p><strong>Google Search Console</strong> lets you monitor how your site appears in Google search results.</p>
+<p><strong>Setup:</strong></p>
+<ol>
+<li>Go to <a href="https://search.google.com/search-console">Google Search Console</a></li>
+<li>Add your website:
+<ul>
+<li>Click <strong>&quot;URL prefix&quot;</strong></li>
+<li>Enter your site URL: <code>https://your-domain.com</code></li>
+</ul>
+</li>
+<li>Verify ownership (choose one method):
+<ul>
+<li><strong>HTML file upload</strong> – Download file, add to repository root</li>
+<li><strong>HTML tag</strong> – Copy meta tag to <code>_config.yml</code> → redeploy</li>
+<li><strong>Google Analytics</strong> – If you already use Google Analytics</li>
+<li><strong>DNS record</strong> – Advanced (if you own the domain)</li>
+</ul>
+</li>
+</ol>
+<p><strong>Add to <code>_config.yml</code>:</strong></p>
+<pre><code class="language-yaml">google_site_verification: YOUR_VERIFICATION_CODE
+</code></pre>
+<p>(Replace <code>YOUR_VERIFICATION_CODE</code> with the code from Search Console.)</p>
+<p><strong>Monitor in Search Console:</strong></p>
+<ul>
+<li><strong>Performance</strong> – Which queries bring traffic, your ranking position</li>
+<li><strong>Coverage</strong> – Any indexing errors</li>
+<li><strong>Enhancements</strong> – Schema.org validation</li>
+<li><strong>Sitemaps</strong> – Your sitemap status</li>
+</ul>
+<hr />
+<h3 id="bing-webmaster-tools">Bing Webmaster Tools</h3>
+<p>Similar to Google Search Console but for Bing search:</p>
+<ol>
+<li>Go to <a href="https://www.bing.com/webmasters">Bing Webmaster Tools</a></li>
+<li>Add your site</li>
+<li>Verify (usually auto-verifies if you verified Google)</li>
+<li>Add to <code>_config.yml</code>:
+<pre><code class="language-yaml">bing_site_verification: YOUR_BING_CODE
+</code></pre>
+</li>
+</ol>
+<p><strong>Note:</strong> Bing commands are optional but recommended. Check both console dashboards regularly.</p>
+<hr />
+<h2 id="publication-indexing">Publication Indexing</h2>
+<h3 id="google-scholar">Google Scholar</h3>
+<p><strong>Goal:</strong> Get your publications listed on Google Scholar so they show up in scholar search results.</p>
+<p><strong>Google Scholar auto-crawls:</strong></p>
+<ul>
+<li>Your website automatically (if publicly accessible)</li>
+<li>Your publications page if it has proper markup</li>
+<li>PDFs linked from your site</li>
+</ul>
+<p><strong>To improve Scholar indexing:</strong></p>
+<ol>
+<li><p><strong>Ensure BibTeX has proper format:</strong></p>
+<pre><code class="language-bibtex">@article{mykey,
+  title={Your Paper Title},
+  author={Your Name and Co-Author},
+  journal={Journal Name},
+  year={2024},
+  volume={1},
+  pages={1-10},
+  doi={10.1234/doi}
+}
+</code></pre>
+</li>
+<li><p><strong>Add PDFs to BibTeX:</strong></p>
+<pre><code class="language-bibtex">@article{mykey,
+  # ... other fields ...
+  pdf={my-paper.pdf}  # File at assets/pdf/my-paper.pdf
+}
+</code></pre>
+</li>
+<li><p><strong>Submit to Google Scholar (optional):</strong></p>
+<ul>
+<li>Go to <a href="https://scholar.google.com/citations">Google Scholar Author Profile</a></li>
+<li>Create a profile</li>
+<li>Google will find your papers automatically within weeks</li>
+</ul>
+</li>
+<li><p><strong>Wait 3-6 months</strong> – Google Scholar takes time to index</p>
+</li>
+</ol>
+<hr />
+<h3 id="dblp-computer-science">DBLP (Computer Science)</h3>
+<p>If your research is computer science related:</p>
+<ol>
+<li>Go to <a href="https://dblp.org/">DBLP</a></li>
+<li>Search for yourself or your papers</li>
+<li>If missing, <a href="https://dblp.org/db/contrib/">Submit via DBLP</a> (requires account)</li>
+<li>DBLP will verify and add your work</li>
+</ol>
+<hr />
+<h3 id="arxiv">arXiv</h3>
+<p>If you have preprints:</p>
+<ol>
+<li>Go to <a href="https://arxiv.org/">arXiv.org</a></li>
+<li>Submit your preprint</li>
+<li>Once listed, arXiv automatically indexes it across search engines</li>
+</ol>
+<p><strong>Add arXiv link to BibTeX:</strong></p>
+<pre><code class="language-bibtex">@article{mykey,
+  # ... other fields ...
+  arxiv={2024.12345}  # arXiv ID
+}
+</code></pre>
+<hr />
+<h2 id="content-optimization">Content Optimization</h2>
+<h3 id="page-titles-and-descriptions">Page Titles and Descriptions</h3>
+<p>Every page needs a title and description. These show in search results.</p>
+<p><strong>In <code>_config.yml</code>:</strong></p>
+<pre><code class="language-yaml">title: Jane Smith - Computer Science Researcher
+description: &gt;
+  Academic website of Jane Smith, focusing on machine learning and AI ethics.
+</code></pre>
+<p><strong>In page/post frontmatter:</strong></p>
+<pre><code class="language-markdown">---
+layout: post
+title: Novel Deep Learning Architecture for Climate Modeling
+description: A new approach to improving climate model accuracy with deep learning
+---
+</code></pre>
+<p><strong>Checklist:</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Title under 60 characters (so it doesn't get cut off)</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Description 120-160 characters</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Include your name in the site title</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Include keywords naturally</li>
+</ul>
+<hr />
+<h3 id="heading-structure">Heading Structure</h3>
+<p>Use proper HTML heading hierarchy for both SEO and accessibility:</p>
+<pre><code class="language-markdown"># H1: Main Page Title
+
+Use one H1 per page, usually your blog post or page title
+
+## H2: Section Heading
+
+### H3: Subsection
+
+### H3: Another subsection
+
+## H2: Another Section
+</code></pre>
+<p><strong>Benefits:</strong></p>
+<ul>
+<li>Search engines understand your content structure</li>
+<li>Screen readers can navigate better</li>
+<li>Visitors can scan your content</li>
+</ul>
+<hr />
+<h3 id="image-optimization">Image Optimization</h3>
+<p><strong>For SEO:</strong></p>
+<ul>
+<li>Use descriptive filenames: <code>neural-network-architecture.png</code> (not <code>img1.png</code>)</li>
+<li>Add alt text (also helps accessibility):
+<pre><code class="language-markdown">![Neural network showing three layers with training accuracy of 95%](assets/img/neural-network.png)
+</code></pre>
+</li>
+</ul>
+<p><strong>For performance:</strong></p>
+<ul>
+<li>Optimize image file size (use tools like TinyPNG)</li>
+<li>Use modern formats (WebP instead of large JPGs)</li>
+<li>Responsive images (different sizes for mobile vs desktop)</li>
+</ul>
+<hr />
+<h3 id="internal-linking">Internal Linking</h3>
+<p>Link between your own pages strategically:</p>
+<pre><code class="language-markdown">See my [publication on climate AI](./publications/) or my [blog post on neural networks](/blog/2024/neural-networks/).
+</code></pre>
+<p><strong>Benefits:</strong></p>
+<ul>
+<li>Search engines crawl through your links</li>
+<li>Users discover more of your content</li>
+<li>Distributes &quot;authority&quot; across your site</li>
+</ul>
+<hr />
+<h2 id="rss-feed-for-discovery">RSS Feed for Discovery</h2>
+<p>al-folio auto-generates an RSS feed at <code>/feed.xml</code>.</p>
+<p><strong>Why RSS matters:</strong></p>
+<ul>
+<li>Content aggregators pick up your posts</li>
+<li>Researchers can subscribe to your updates</li>
+<li>Improves discoverability</li>
+</ul>
+<p><strong>Ensure your feed works:</strong></p>
+<pre><code class="language-yaml"># In _config.yml
+title: Your Site
+description: Your site description
+url: https://your-domain.com # MUST be complete URL
+</code></pre>
+<p><strong>Test your feed:</strong></p>
+<ul>
+<li>Visit <code>https://your-site.com/feed.xml</code></li>
+<li>Should show XML with your recent posts</li>
+<li>Try subscribing in a feed reader (Feedly, etc.)</li>
+</ul>
+<hr />
+<h2 id="performance-mobile">Performance &amp; Mobile</h2>
+<p>Search engines favor fast, mobile-friendly sites.</p>
+<p><strong>Check your site:</strong></p>
+<ul>
+<li>Use <a href="https://pagespeed.web.dev/">Google PageSpeed Insights</a></li>
+<li>Enter your site URL</li>
+<li>Review recommendations</li>
+<li>al-folio already optimizes for performance, but you can improve further:
+<ul>
+<li>Compress images</li>
+<li>Minimize CSS/JS (enabled by default)</li>
+<li>Use lazy loading (already enabled)</li>
+</ul>
+</li>
+</ul>
+<p><strong>Mobile optimization:</strong></p>
+<ul>
+<li>al-folio is responsive by default</li>
+<li>Test on phones/tablets</li>
+<li>Ensure buttons are large enough to tap</li>
+<li>Check readability on small screens</li>
+</ul>
+<hr />
+<h2 id="seo-checklist">SEO Checklist</h2>
+<p>Before considering your site &quot;SEO optimized&quot;:</p>
+<p><strong>Basic Setup:</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> <code>_config.yml</code> has <code>title</code>, <code>description</code>, <code>author</code>, <code>url</code></li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Sitemap accessible at <code>/sitemap.xml</code></li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> <code>robots.txt</code> accessible at <code>/robots.txt</code></li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Mobile-friendly (test on phone)</li>
+</ul>
+<p><strong>Search Console:</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Google Search Console linked</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Bing Webmaster Tools linked (optional but recommended)</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> No major indexing errors</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Sitemaps submitted</li>
+</ul>
+<p><strong>Schema/Open Graph:</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> <code>serve_og_meta: true</code> (for social sharing)</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> <code>serve_schema_org: true</code> (for structured data)</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Test OG with <a href="https://developers.facebook.com/tools/debug/sharing/">Facebook Debugger</a></li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Validate schema at <a href="https://validator.schema.org/">Schema.org Validator</a></li>
+</ul>
+<p><strong>Content:</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Every page has unique title (under 60 chars)</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Every page has description (120-160 chars)</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Blog posts have proper dates</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Images have descriptive alt text</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Headings follow proper hierarchy</li>
+</ul>
+<p><strong>Publications:</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> BibTeX entries have proper format</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> PDFs linked from BibTeX</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Submitted to Google Scholar (optional)</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Indexed on DBLP or arXiv (if applicable)</li>
+</ul>
+<p><strong>Performance:</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Site loads under 3 seconds (check PageSpeed)</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> No broken links (use lighthouse or similar)</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> RSS feed works (check <code>/feed.xml</code>)</li>
+</ul>
+<hr />
+<h2 id="resources">Resources</h2>
+<ul>
+<li><strong><a href="https://developers.google.com/search">Google Search Central</a></strong> – Official SEO guide</li>
+<li><strong><a href="https://moz.com/beginners-guide-to-seo">Moz SEO Checklist</a></strong> – Beginner-friendly guide</li>
+<li><strong><a href="https://pagespeed.web.dev/">Google PageSpeed Insights</a></strong> – Performance analysis</li>
+<li><strong><a href="https://schema.org/">Schema.org</a></strong> – Structured data reference</li>
+<li><strong><a href="https://webaim.org/">WebAIM</a></strong> – Accessibility (helps SEO too)</li>
+<li><strong><a href="https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpombljlkpstvnztVTNyZe">Lighthouse Audit</a></strong> – Browser extension</li>
+</ul>
+<hr />
+<p><strong>Next Steps:</strong></p>
+<ol>
+<li>Enable Open Graph and Schema.org in <code>_config.yml</code></li>
+<li>Set up Google Search Console and Bing Webmaster Tools</li>
+<li>Optimize your page titles and descriptions</li>
+<li>Add alt text to images and PDFs to your BibTeX</li>
+<li>Monitor search console regularly for indexing issues</li>
+</ol>
+<p>Your research will be more discoverable with these optimizations! 🔍</p>
