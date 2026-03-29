@@ -69,7 +69,7 @@
 <link rel="stylesheet" href="/al-folio/assets/css/bootstrap.min.css">
 <link
   rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/mdbootstrap@{{version}}/css/mdb.min.css"
+  href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css"
   integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw="
   crossorigin="anonymous"
 >
@@ -125,7 +125,7 @@
   <link
     defer
     rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/leaflet@{{version}}/dist/leaflet.min.css"
+    href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.min.css"
     integrity="sha256-q9ba7o845pMPFU+zcAll8rv+gC+fSovKsOoNQ6cynuQ="
     crossorigin="anonymous"
   >
@@ -136,7 +136,7 @@
   <link
     defer
     rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/highlight.js@{{version}}/styles/github.min.css"
+    href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github.min.css"
     integrity="sha256-Oppd74ucMR5a5Dq96FxjEzGF7tTw2fZ/6ksAqDCM8GY="
     crossorigin="anonymous"
     media="screen and (prefers-color-scheme: light)"
@@ -144,7 +144,7 @@
   <link
     defer
     rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/highlight.js@{{version}}/styles/github-dark.min.css"
+    href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github-dark.min.css"
     integrity="sha256-nyCNAiECsdDHrr/s2OQsp5l9XeY2ZJ0rMepjCT2AkBk="
     crossorigin="anonymous"
     media="screen and (prefers-color-scheme: dark)"
@@ -152,7 +152,7 @@
   <link
     defer
     rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/diff2html@{{version}}/bundles/css/diff2html.min.css"
+    href="https://cdn.jsdelivr.net/npm/diff2html@3.4.47/bundles/css/diff2html.min.css"
     integrity="sha256-IMBK4VNZp0ivwefSn51bswdsrhk0HoMTLc2GqFHFBXg="
     crossorigin="anonymous"
   >
@@ -419,7 +419,9 @@ fig.write_html('assets/plotly/demo.html')</p>
 <hr />
 <h2 id="details-boxes">Details boxes</h2>
 <p>Details boxes are collapsible boxes which hide additional information from the user. They can be added with the <code>details</code> liquid tag:</p>
-<p>Additional details, where math <span class="math">\(2x - 1\)</span> and <code>code</code> is rendered correctly.</p>
+<details><summary>Click here to know more</summary>
+Additional details, where math $$ 2x - 1 $$ and `code` is rendered correctly.
+</details>
 <hr />
 <h2 id="mermaid">Mermaid</h2>
 <p>This theme supports creating diagrams directly in markdown using <a href="https://mermaid.js.org/">Mermaid</a>. Mermaid enables users to render flowcharts, sequence diagrams, class diagrams, Gantt charts, and more. Simply embed the diagram syntax within a mermaid code block.</p>
@@ -1797,7 +1799,7 @@ This line is only separated by a single newline, so it's a separate line in the 
     <!-- JavaScripts -->
     <!-- jQuery -->
 <script
-  src="https://cdn.jsdelivr.net/npm/jquery@{{version}}/dist/jquery.min.js"
+  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"
   integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
   crossorigin="anonymous"
 ></script>
@@ -1805,7 +1807,7 @@ This line is only separated by a single newline, so it's a separate line in the 
 <!-- Bootsrap & MDB scripts -->
 <script src="/al-folio/assets/js/bootstrap.bundle.min.js"></script>
 <script
-  src="https://cdn.jsdelivr.net/npm/mdbootstrap@{{version}}/js/mdb.min.js"
+  src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js"
   integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA="
   crossorigin="anonymous"
 ></script>
@@ -1817,14 +1819,14 @@ This line is only separated by a single newline, so it's a separate line in the 
   <!-- Mermaid and D3 -->
   <script
     defer
-    src="https://cdn.jsdelivr.net/npm/mermaid@{{version}}/dist/mermaid.min.js"
+    src="https://cdn.jsdelivr.net/npm/mermaid@10.7.0/dist/mermaid.min.js"
     integrity="sha256-TtLOdUA8mstPoO6sGvHIGx2ceXrrX4KgIItO06XOn8A="
     crossorigin="anonymous"
   ></script>
   
     <script
       defer
-      src="https://cdn.jsdelivr.net/npm/d3@{{version}}/dist/d3.min.js"
+      src="https://cdn.jsdelivr.net/npm/d3@7.8.5/dist/d3.min.js"
       integrity="sha256-1rA678n2xEx7x4cTZ5x4wpUCj6kUMZEZ5cxLSVSFWxw="
       crossorigin="anonymous"
     ></script>
@@ -1836,7 +1838,7 @@ This line is only separated by a single newline, so it's a separate line in the 
   <!-- Diff2HTML -->
   <!-- diff2html doesn't go well with Bootstrap Table -->
   <script
-    src="https://cdn.jsdelivr.net/npm/diff2html@{{version}}/bundles/js/diff2html-ui.min.js"
+    src="https://cdn.jsdelivr.net/npm/diff2html@3.4.47/bundles/js/diff2html-ui.min.js"
     integrity="sha256-eU2TVHX633T1o/bTQp6iIJByYJEtZThhF9bKz/DcbbY="
     crossorigin="anonymous"
   ></script>
@@ -1846,7 +1848,7 @@ This line is only separated by a single newline, so it's a separate line in the 
 
   <!-- Leaflet -->
   <script
-    src="https://cdn.jsdelivr.net/npm/leaflet@{{version}}/dist/leaflet.min.js"
+    src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.min.js"
     integrity="sha256-MgH13bFTTNqsnuEoqNPBLDaqxjGH+lCpqrukmXc8Ppg="
     crossorigin="anonymous"
   ></script>
@@ -1857,7 +1859,7 @@ This line is only separated by a single newline, so it's a separate line in the 
   <!-- Chart.js -->
   <script
     defer
-    src="https://cdn.jsdelivr.net/npm/chart.js@{{version}}/dist/chart.umd.min.js"
+    src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"
     integrity="sha256-0q+JdOlScWOHcunpUk21uab1jW7C1deBQARHtKMcaB4="
     crossorigin="anonymous"
   ></script>
@@ -1867,13 +1869,13 @@ This line is only separated by a single newline, so it's a separate line in the 
 
   <!-- ECharts -->
   <script
-    src="https://cdn.jsdelivr.net/npm/echarts@{{version}}/dist/echarts.min.js"
+    src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"
     integrity="sha256-QvgynZibb2U53SsVu98NggJXYqwRL7tg3FeyfXvPOUY="
     crossorigin="anonymous"
   ></script>
   
     <script
-      src="https://cdn.jsdelivr.net/npm/echarts@{{version}}/theme/dark-fresh-cut.js"
+      src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/theme/dark-fresh-cut.js"
       integrity="sha256-sm6Ui9w41++ZCWmIWDLC18a6ki72FQpWDiYTDxEPXwU="
       crossorigin="anonymous"
     ></script>
@@ -1887,19 +1889,19 @@ This line is only separated by a single newline, so it's a separate line in the 
   <!-- Vega -->
   <script
     defer
-    src="https://cdn.jsdelivr.net/npm/vega@{{version}}/build/vega.min.js"
+    src="https://cdn.jsdelivr.net/npm/vega@5.27.0/build/vega.min.js"
     integrity="sha256-Yot/cfgMMMpFwkp/5azR20Tfkt24PFqQ6IQS+80HIZs="
     crossorigin="anonymous"
   ></script>
   <script
     defer
-    src="https://cdn.jsdelivr.net/npm/vega-lite@{{version}}/build/vega-lite.min.js"
+    src="https://cdn.jsdelivr.net/npm/vega-lite@5.16.3/build/vega-lite.min.js"
     integrity="sha256-TvBvIS5jUN4BSy009usRjNzjI1qRrHPYv7xVLJyjUyw="
     crossorigin="anonymous"
   ></script>
   <script
     defer
-    src="https://cdn.jsdelivr.net/npm/vega-embed@{{version}}/build/vega-embed.min.js"
+    src="https://cdn.jsdelivr.net/npm/vega-embed@6.24.0/build/vega-embed.min.js"
     integrity="sha256-FPCJ9JYCC9AZSpvC/t/wHBX7ybueZhIqOMjpWqfl3DU="
     crossorigin="anonymous"
   ></script>
@@ -1922,7 +1924,7 @@ This line is only separated by a single newline, so it's a separate line in the 
   <!-- Medium Zoom JS -->
   <script
     defer
-    src="https://cdn.jsdelivr.net/npm/medium-zoom@{{version}}/dist/medium-zoom.min.js"
+    src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"
     integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc="
     crossorigin="anonymous"
   ></script>
@@ -1949,14 +1951,14 @@ This line is only separated by a single newline, so it's a separate line in the 
     defer
     type="text/javascript"
     id="MathJax-script"
-    src="https://cdn.jsdelivr.net/npm/mathjax@{{version}}/es5/tex-mml-chtml.js"
+    src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"
     integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="
     crossorigin="anonymous"
   ></script>
   <script src="/al-folio/assets/js/mathjax-setup.js"></script>
   <script
     defer
-    src="https://cdnjs.cloudflare.com/polyfill/v{{version}}/polyfill.min.js?features=es6"
+    src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"
     crossorigin="anonymous"
   ></script>
   <!-- Removed Pseudocode -->
