@@ -23,6 +23,8 @@
 <meta name="author" content="You R. Name">
 <meta name="description" content="This is a description of the page. You can modify it in '_pages/cv.md'. You can also change or remove the top pdf download button.">
 
+  <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website">
+
 
 
 
@@ -92,6 +94,9 @@
 >
 
 
+  <!-- Sidebar Table of Contents -->
+  <link defer href="/al-folio/assets/css/bootstrap-toc.min.css" rel="stylesheet">
+
 
 <!-- Styles -->
 
@@ -139,16 +144,10 @@
         <a class="navbar-brand title font-weight-lighter" href="/al-folio/">
           
             
-              <span class="font-weight-bold">
-                
-              </span>
+              <span class="font-weight-bold">You</span>
             
-            
-              
-            
-            
-              
-            
+            R.
+            Name
           
         </a>
       
@@ -178,7 +177,6 @@
           <!-- About -->
           <li class="nav-item ">
             <a class="nav-link" href="/al-folio/">
-              
               
             </a>
           </li>
@@ -222,18 +220,14 @@
     <!-- Content -->
     <div class="container mt-5" role="main">
       
-          Unified CV layout that handles both RenderCV (YAML) and JSONResume (JSON) formats
-  - If page.cv_format is set, it determines which format to render:
-    - 'rendercv': Load and render only RenderCV data (site.data.cv.cv)
-    - 'jsonresume': Load and render only JSONResume data (site.data.resume)
-  - If page.cv_format is not set, the legacy behavior applies:
-    - RenderCV data is in site.data.cv.cv
-    - JSONResume data is in site.data.resume
-    - RenderCV is prioritized if both exist
-  Both formats use the same unified rendering includes for consistent output
-
-
-<div class="post">
+        
+          <div class="row">
+            <!-- sidebar, which will move to the top on a small screen -->
+            <div class="col-sm-3">
+              <nav id="toc-sidebar" class="sticky-top"></nav>
+            </div>
+            <!-- main content area -->
+            <div class="col-sm-9"><div class="post">
   <header class="post-header">
     <h1 class="post-title">
       CV
@@ -257,7 +251,7 @@
 
   <article>
     <div class="cv">
-       Determine which CV format to render 
+      
       
       
 
@@ -268,12 +262,118 @@
       
 
       
-        <p>No CV data found. Please configure either RenderCV (cv.yml) or JSONResume (resume.json) data.</p>
+        
+        
+
+        <!-- Header/Contact Information -->
+        
+          <div class="card mt-3 p-3">
+            <h3 class="card-title font-weight-medium">Contact Information</h3>
+            <table class="table table-cv table-sm table-borderless">
+              
+                <tr>
+                  <td class="p-1 pr-2 font-weight-bold"><b>Name</b></td>
+                  <td class="p-1 pl-2 font-weight-light">Albert Einstein</td>
+                </tr>
+              
+              
+                <tr>
+                  <td class="p-1 pr-2 font-weight-bold"><b>Professional Title</b></td>
+                  <td class="p-1 pl-2 font-weight-light">Scientist</td>
+                </tr>
+              
+              
+                <tr>
+                  <td class="p-1 pr-2 font-weight-bold"><b>Email</b></td>
+                  <td class="p-1 pl-2 font-weight-light">einstein@example.com</td>
+                </tr>
+              
+              
+              
+                <tr>
+                  <td class="p-1 pr-2 font-weight-bold"><b>Location</b></td>
+                  <td class="p-1 pl-2 font-weight-light">
+                    2712 Broadway St, 
+                    San Francisco, 
+                    California 
+                    CA 94115
+                  </td>
+                </tr>
+              
+              
+            </table>
+          </div>
+        
+
+        <!-- Summary -->
+        
+          <div class="card mt-3 p-3">
+            <h3 class="card-title font-weight-medium">Professional Summary</h3>
+            <p>A German-born theoretical physicist, widely ranked among the greatest and most influential scientists of all time</p>
+          </div>
+        
+
+        <!-- RenderCV Sections - Merge Experience and Volunteer -->
+        
+        
+        
+        
+        
+        
+
+        
+        
+
+      
+        
+
+        <!-- Contact Information -->
+        
+
+        <!-- Summary -->
+        
+
+        <!-- JSONResume Sections - Merge work and volunteer into Experience -->
+        
+        
+        
+        
+        
+
+        <!-- Education -->
+        
+
+        <!-- Awards -->
+        
+
+        <!-- Publications -->
+        
+
+        <!-- Skills -->
+        
+
+        <!-- Languages -->
+        
+
+        <!-- Interests -->
+        
+
+        <!-- Certificates -->
+        
+
+        <!-- Projects -->
+        
+
+        <!-- References -->
+        
+
       
     </div>
   </article>
 </div>
-
+</div>
+          </div>
+        
       
     </div>
 
@@ -364,6 +464,9 @@
 
 
 
+  <!-- Sidebar Table of Contents -->
+  <script defer src="/al-folio/assets/js/bootstrap-toc.min.js"></script>
+
 
 
 
@@ -401,6 +504,7 @@
       crossorigin="anonymous"
     ></script>
   
+
 
 
 

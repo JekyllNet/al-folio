@@ -23,6 +23,8 @@
 <meta name="author" content="You R. Name">
 <meta name="description" content="Course materials, schedules, and resources for classes taught.">
 
+  <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website">
+
 
 
 
@@ -139,16 +141,10 @@
         <a class="navbar-brand title font-weight-lighter" href="/al-folio/">
           
             
-              <span class="font-weight-bold">
-                
-              </span>
+              <span class="font-weight-bold">You</span>
             
-            
-              
-            
-            
-              
-            
+            R.
+            Name
           
         </a>
       
@@ -178,7 +174,6 @@
           <!-- About -->
           <li class="nav-item ">
             <a class="nav-link" href="/al-folio/">
-              
               
             </a>
           </li>
@@ -230,36 +225,30 @@
 
   <article>
     <p>This page displays a collection of courses with detailed schedules, materials, and resources. You can organize your courses by years, terms, or topics.</p>
-<p>
   <div class="post mt-4">
     <h2 class="mb-3"><i class="fas fa-calendar-alt"></i> Upcoming Events</h2>
+<pre><code>&lt;button
+  class=&quot;btn btn-sm btn-outline-primary mb-3&quot;
+  onclick=&quot;toggleCalendar()&quot;
+  id=&quot;calendar-toggle-btn&quot;
+&gt;
+  Show Calendar
+&lt;/button&gt;
 
-    <button
-      class="btn btn-sm btn-outline-primary mb-3"
-      onclick="toggleCalendar()"
-      id="calendar-toggle-btn"
-    >
-      Show Calendar
-    </button>
-
-    <div class="calendar-wrapper" id="calendar-container" style="display: none;">
-      <iframe
-        id="calendar-iframe"
-        data-calendar-id="test@gmail.com"
-        data-timezone="Asia/Shanghai"
-        style="border:0; width:100%; height:600px;"
-        frameborder="0"
-        scrolling="no"
-      >
-      </iframe>
-    </div>
+&lt;div class=&quot;calendar-wrapper&quot; id=&quot;calendar-container&quot; style=&quot;display: none;&quot;&gt;
+  &lt;iframe
+    id=&quot;calendar-iframe&quot;
+    data-calendar-id=&quot;test@gmail.com&quot;
+    data-timezone=&quot;Asia/Shanghai&quot;
+    style=&quot;border:0; width:100%; height:600px;&quot;
+    frameborder=&quot;0&quot;
+    scrolling=&quot;no&quot;
+  &gt;
+  &lt;/iframe&gt;
+&lt;/div&gt;
+</code></pre>
   </div>
-
-</p>
-<p>
   <p>No courses available yet.</p>
-
-</p>
 
   </article>
 
@@ -398,6 +387,7 @@
       crossorigin="anonymous"
     ></script>
   
+
 
 
 

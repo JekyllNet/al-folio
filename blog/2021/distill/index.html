@@ -21,8 +21,14 @@
 <meta name="author" content="You R. Name">
 <meta name="description" content="an example of a distill-style blog post and main elements">
 
+  <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website">
 
 
+
+
+  
+    
+  
 
 
 
@@ -40,7 +46,7 @@
             "name": "You R. Name"
         },
         "url": "https://alshedivat.github.io/al-folio/blog/2021/distill/",
-        "@type": "WebSite",
+        "@type": "BlogPosting",
         "description": "an example of a distill-style blog post and main elements",
         "headline": "a distill-style blog post",
         
@@ -254,16 +260,10 @@
         <a class="navbar-brand title font-weight-lighter" href="/al-folio/">
           
             
-              <span class="font-weight-bold">
-                
-              </span>
+              <span class="font-weight-bold">You</span>
             
-            
-              
-            
-            
-              
-            
+            R.
+            Name
           
         </a>
       
@@ -293,7 +293,6 @@
           <!-- About -->
           <li class="nav-item ">
             <a class="nav-link" href="/al-folio/">
-              
               
             </a>
           </li>
@@ -384,12 +383,10 @@ For larger blocks of code, add a <code>block</code> attribute:</p>
   }
 </d-code>
 <p><strong>Note:</strong> <code>&lt;d-code&gt;</code> blocks do not look good in the dark mode. You can instead use the standard Jekyll syntax highlight with the <code>highlight</code> liquid tag.</p>
-<p>
-var x = 25;
+<p>var x = 25;
 function(x) {
 return x * x;
-}
-</p>
+}</p>
 <p>You can also write standard Markdown code blocks in triple ticks with a language tag, for instance:</p>
 <pre><code class="language-python">def foo(x):
   return x
@@ -402,8 +399,7 @@ return x * x;
 </div>
 <p>The plot must be generated separately and saved into an HTML file.
 To generate the plot that you see above, you can use the following code snippet:</p>
-<p>
-import pandas as pd
+<p>import pandas as pd
 import plotly.express as px
 df = pd.read_csv(
 'https://raw.githubusercontent.com/plotly/datasets/master/earthquakes-23k.csv'
@@ -419,14 +415,11 @@ zoom=0,
 mapbox_style=&quot;stamen-terrain&quot;,
 )
 fig.show()
-fig.write_html('assets/plotly/demo.html')
-</p>
+fig.write_html('assets/plotly/demo.html')</p>
 <hr />
 <h2 id="details-boxes">Details boxes</h2>
 <p>Details boxes are collapsible boxes which hide additional information from the user. They can be added with the <code>details</code> liquid tag:</p>
-<p>
-Additional details, where math <span class="math">\(2x - 1\)</span> and <code>code</code> is rendered correctly.
-</p>
+<p>Additional details, where math <span class="math">\(2x - 1\)</span> and <code>code</code> is rendered correctly.</p>
 <hr />
 <h2 id="mermaid">Mermaid</h2>
 <p>This theme supports creating diagrams directly in markdown using <a href="https://mermaid.js.org/">Mermaid</a>. Mermaid enables users to render flowcharts, sequence diagrams, class diagrams, Gantt charts, and more. Simply embed the diagram syntax within a mermaid code block.</p>
@@ -1498,36 +1491,44 @@ They are useful for providing additional context or references without interrupt
 <pre><code class="language-html">&lt;aside&gt;&lt;p&gt;This is a sidenote using aside tag.&lt;/p&gt;&lt;/aside&gt;
 </code></pre>
 <aside><p> This is a sidenote using `&lt;aside&gt;` tag</p> </aside>
-<p>We can also add images to sidenotes (click on the image to zoom in for a larger version):
-</p>
+<p>We can also add images to sidenotes (click on the image to zoom in for a larger version):</p>
 <pre><code class="language-html">&lt;aside&gt;
   
 
 
 
-<figure
+&lt;figure
   
->
-  <picture>
-    <!-- Auto scaling with imagemagick -->
-    <!--
+&gt;
+  &lt;picture&gt;
+    &lt;!-- Auto scaling with imagemagick --&gt;
+    &lt;!--
       See https://www.debugbear.com/blog/responsive-images#w-descriptors-and-the-sizes-attribute and
       https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
-    -->
+    --&gt;
     
       
-        <source
-          class="responsive-img-srcset"
+        &lt;source
+          class=&quot;responsive-img-srcset&quot;
           
+            srcset=&quot;/al-folio/assets/img/rhino.png&quot;
+          
+          
+            sizes=&quot;95vw&quot;
+          
+        &gt;
+      
     
-    <img
-      src=""
+    &lt;img
+      src=&quot;/al-folio/assets/img/rhino.png&quot;
+      
+        class=&quot;img-fluid rounded z-depth-1&quot;
       
       
-        width="100%"
+        width=&quot;100%&quot;
       
       
-        height="auto"
+        height=&quot;auto&quot;
       
       
       
@@ -1536,12 +1537,16 @@ They are useful for providing additional context or references without interrupt
         data-zoomable
       
       
-      onerror="this.onerror=null; $('.responsive-img-srcset').remove();"
-    >
-  </picture>
+        loading=&quot;eager&quot;
+      
+        loading=&quot;lazy&quot;
+      
+      onerror=&quot;this.onerror=null; $('.responsive-img-srcset').remove();&quot;
+    &gt;
+  &lt;/picture&gt;
 
   
-</figure>
+&lt;/figure&gt;
 
   &lt;p&gt;
     F.J. Cole, “The History of Albrecht Dürer’s Rhinoceros in Zoological Literature,” Science, Medicine, and History: Essays on the Evolution of
@@ -1549,12 +1554,8 @@ They are useful for providing additional context or references without interrupt
   &lt;/p&gt;
 &lt;/aside&gt;
 </code></pre>
-<p></p>
 <aside>
   
-
-
-
 <figure
   
 >
@@ -1569,6 +1570,13 @@ They are useful for providing additional context or references without interrupt
         <source
           class="responsive-img-srcset"
           
+            srcset="/al-folio/assets/img/rhino.png"
+          
+          
+            sizes="95vw"
+          
+        >
+      
     
     <img
       src="/al-folio/assets/img/rhino.png"
@@ -1595,10 +1603,7 @@ They are useful for providing additional context or references without interrupt
       onerror="this.onerror=null; $('.responsive-img-srcset').remove();"
     >
   </picture>
-
-  
 </figure>
-
   <p>F.J. Cole, “The History of Albrecht Dürer’s Rhinoceros in Zoological Literature,” Science, Medicine, and History: Essays on the Evolution of Scientific Thought and Medical Practice (London, 1953), ed. E. Ashworth Underwood, 337-356. From page 71 of Edward Tufte’s Visual Explanations.</p>
 </aside>
 <p>Sidenotes can also contain equations and links:</p>
@@ -1739,9 +1744,32 @@ This line is only separated by a single newline, so it's a separate line in the 
 
       <d-article>
         
+          
+            
+
+
+
+          
+        
         <br>
         <br>
         
+        
+          <div
+  id="giscus_thread"
+  
+>
+  
+
+  
+    <script defer src="/al-folio/assets/js/giscus-setup.js"></script>
+    <noscript>
+      Please enable JavaScript to view the
+      <a href="http://giscus.app/?ref_noscript">comments powered by giscus.</a>
+    </noscript>
+  
+</div>
+
         
       </d-article>
     </div>
@@ -1786,6 +1814,23 @@ This line is only separated by a single newline, so it's a separate line in the 
 <script src="/al-folio/assets/js/distillpub/overrides.js"></script>
 
 
+  <!-- Mermaid and D3 -->
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/mermaid@{{version}}/dist/mermaid.min.js"
+    integrity="sha256-TtLOdUA8mstPoO6sGvHIGx2ceXrrX4KgIItO06XOn8A="
+    crossorigin="anonymous"
+  ></script>
+  
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/d3@{{version}}/dist/d3.min.js"
+      integrity="sha256-1rA678n2xEx7x4cTZ5x4wpUCj6kUMZEZ5cxLSVSFWxw="
+      crossorigin="anonymous"
+    ></script>
+  
+  <script defer src="/al-folio/assets/js/mermaid-setup.js" type="text/javascript"></script>
+
 
 
   <!-- Diff2HTML -->
@@ -1809,11 +1854,56 @@ This line is only separated by a single newline, so it's a separate line in the 
 
 
 
+  <!-- Chart.js -->
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/chart.js@{{version}}/dist/chart.umd.min.js"
+    integrity="sha256-0q+JdOlScWOHcunpUk21uab1jW7C1deBQARHtKMcaB4="
+    crossorigin="anonymous"
+  ></script>
+  <script defer src="/al-folio/assets/js/chartjs-setup.js" type="text/javascript"></script>
+
+
+
+  <!-- ECharts -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/echarts@{{version}}/dist/echarts.min.js"
+    integrity="sha256-QvgynZibb2U53SsVu98NggJXYqwRL7tg3FeyfXvPOUY="
+    crossorigin="anonymous"
+  ></script>
+  
+    <script
+      src="https://cdn.jsdelivr.net/npm/echarts@{{version}}/theme/dark-fresh-cut.js"
+      integrity="sha256-sm6Ui9w41++ZCWmIWDLC18a6ki72FQpWDiYTDxEPXwU="
+      crossorigin="anonymous"
+    ></script>
+  
+  <script defer src="/al-folio/assets/js/echarts-setup.js" type="text/javascript"></script>
 
 
 
 
 
+  <!-- Vega -->
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/vega@{{version}}/build/vega.min.js"
+    integrity="sha256-Yot/cfgMMMpFwkp/5azR20Tfkt24PFqQ6IQS+80HIZs="
+    crossorigin="anonymous"
+  ></script>
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/vega-lite@{{version}}/build/vega-lite.min.js"
+    integrity="sha256-TvBvIS5jUN4BSy009usRjNzjI1qRrHPYv7xVLJyjUyw="
+    crossorigin="anonymous"
+  ></script>
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/vega-embed@{{version}}/build/vega-embed.min.js"
+    integrity="sha256-FPCJ9JYCC9AZSpvC/t/wHBX7ybueZhIqOMjpWqfl3DU="
+    crossorigin="anonymous"
+  ></script>
+  <script defer src="/al-folio/assets/js/vega-setup.js" type="text/javascript"></script>
 
 
 
